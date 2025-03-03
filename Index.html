@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        #timer {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nosso Cantinho ❤️</h1>
+        <p>Bem-vindo ao nosso espaço especial!</p>
+        <label for="nomeCasal">Nome do Casal:</label>
+        <input type="text" id="nomeCasal" placeholder="Ex: Ana & João">
+        
+        <label for="dataNamoro">Data do Início do Namoro:</label>
+        <input type="date" id="dataNamoro">
+        
+        <button onclick="gerarPagina()">Criar Página</button>
+        
+        <div id="resultado" style="display:none; margin-top:20px;">
+            <h2 id="casalNome"></h2>
+            <p>Estamos juntos há:</p>
+            <p id="timer"></p>
+        </div>
+    </div>
+
+    <script>
+        function gerarPagina() {
+            let nomeCasal = document.getElementById('nomeCasal').value;
+            let dataNamoro = document.getElementById('dataNamoro').value;
+            
+            if (nomeCasal === '' || dataNamoro === '') {
+                alert('Preencha todos os campos!');
+                return;
+            }
+            
+            let inicio = new Date(dataNamoro);
+            let hoje = new Date();
+            let diff = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('casalNome').innerText = nomeCasal;
+            document.getElementById('timer').innerText = diff + ' dias juntos ❤️';
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
